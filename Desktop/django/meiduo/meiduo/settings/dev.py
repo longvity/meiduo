@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+import sys
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -25,7 +27,9 @@ SECRET_KEY = '&vgp%j!=w-fhi*w)#74jfy#p%rka6!8!c%w2rz8xf-753x81j7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'api.meiduo.site',
+]
 
 
 # Application definition
@@ -39,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    'user.apps.UserConfig',
+    'users.apps.UsersConfig',
 
     'rest_framework',
 ]
@@ -81,9 +85,9 @@ WSGI_APPLICATION = 'meiduo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysqlc',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'meiduo18',
-        'HOST': 'loaclhost',
+        'HOST': 'localhost',
         'POST': 3306,
         'USER': 'meiduo_sy18',
         'PASSWORD': 'meiduo'
@@ -192,7 +196,7 @@ LOGGING = {
 
 REST_FRAMEWORK = {
     # 异常处理
-    'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+    'EXCEPTION_HANDLER': 'meiduo.utils.exceptions.exception_handler',
 }
 
 
